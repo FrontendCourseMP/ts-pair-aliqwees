@@ -1,18 +1,17 @@
 {
-  "name": "www",
+  "name": "my-html-ts-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "tsc && node dist/index.js"
+    "start": "tsc --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@types/node": "^24.10.0",
+    "concurrently": "^9.2.1",
     "typescript": "^5.9.3"
   }
 }
