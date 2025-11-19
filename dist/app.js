@@ -1,4 +1,5 @@
 "use strict";
+//функция под расчет
 function calculateArrivalTime(scheduledHour, delayHours) {
     if (scheduledHour < 0 || scheduledHour > 23 || !Number.isInteger(scheduledHour)) {
         throw new Error('Час прибытия должен быть целым числом от 0 до 23.');
@@ -8,7 +9,7 @@ function calculateArrivalTime(scheduledHour, delayHours) {
     }
     return (scheduledHour + delayHours) % 24;
 }
-//check sckobki
+//функция под скобки
 function checkScobki(value) {
     const input = value ?? '';
     const transform = input.split(''); //v,a,l,l,u,e
@@ -87,5 +88,29 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         lab2_result.textContent = checkScobki(lab2_value.value);
     }); //LAB2
+    // ########## Простейшая форма с Pristine ##########
+    const form3 = document.getElementById('test');
+    if (form3) {
+        const pristine = new Pristine(form3, {
+            classTo: 'form__item', // куда добавлять success/error классы
+            errorClass: 'form__item--invalid', //класс успеха
+            successClass: 'form__item--valid', //класс провала
+            errorTextParent: 'form__item', // куда вставлять <span class="form__error">Ошибка</span>
+            errorTextTag: 'span', //какой тег делать для сообщения ошибки
+            errorTextClass: 'form__error' //какой класс для сообщения ошибки
+        });
+        form3.addEventListener('submit', (e) => {
+            e.preventDefault();
+            //запустили просто
+            const isValid = pristine.validate();
+            if (isValid) { //если true
+                alert('✅ Форма валидна! Можно отправлять.');
+                form3.submit();
+            }
+            else { //если false
+                console.log('❌ Исправьте ошибки.');
+            }
+        });
+    }
 }); //DOM
 // BY TIMQWEES CODE + ALI HELPER

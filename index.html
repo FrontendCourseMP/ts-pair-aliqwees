@@ -4,43 +4,83 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Время прибытия</title>
+    <title>Рабочая область</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .form__item {
+            margin-bottom: 1rem;
+        }
+
+        .form__item--invalid input {
+            border-color: #e53e3e;
+        }
+
+        .form__item--valid input {
+            border-color: #38a169;
+        }
+
+        .form__error {
+            color: #e53e3e;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
+    <section class="mt-10">
+        <!-- ############LABA1################## -->
+        <h2>Расчёт времени прибытия</h2>
+        <form id="lab1">
+            <label>
+                Час прибытия по расписанию (0–23):
+                <input type="number" id="lab1_scheduledHour" min="0" max="23" required class="border rouneded-lg" />
+            </label><br><br>
 
-    <!-- ############LABA1################## -->
-    <h2>Расчёт времени прибытия</h2>
-    <form id="lab1">
-        <label>
-            Час прибытия по расписанию (0–23):
-            <input type="number" id="lab1_scheduledHour" min="0" max="23" required />
-        </label><br><br>
+            <label>
+                Количество часов опоздания (целое ≥ 0):
+                <input class="border rouneded-lg" type="number" id="lab1_delayHours" min="0" required />
+            </label>
+            <button class="bg-black text-white px-2 rounded-lg" type="submit">Рассчитать</button>
+        </form>
 
-        <label>
-            Количество часов опоздания (целое ≥ 0):
-            <input type="number" id="lab1_delayHours" min="0" required />
-        </label>
-        <button type="submit">Рассчитать</button>
-    </form>
-
-    <output id="lab1_result"></output>
-
+        <output id="lab1_result"></output>
+    </section>
     <!-- ############END - END - END################## -->
+
     <!-- ############LABA2################## -->
+    <section class="mt-10">
+        <h2 class="text-xl font-bold mb-2">Проверка скобок</h2>
+        <form id="lab2" method="post">
+            <label>Скобки</label>
+            <input class="border rouneded-lg" type="text" id="lab2_value" required />
+            <button class="bg-black text-white px-2 rounded-lg" type="submit">Рассчитать</button>
+        </form>
 
-    <h2>Проверка скобок</h2>
-    <form id="lab2" method="post">
-        <label>Скобки</label>
-        <input type="text" id="lab2_value" required />
-        <button type="submit">Рассчитать</button>
-    </form>
-
-    <output id="lab2_result" style="color: black;"></output>
-
+        <output id="lab2_result" style="color: black;"></output>
+    </section>
     <!-- ############END - END - END################## -->
 
-    <script src="./dist/app.js" type="module"></script>
+    <!-- ############Lab3 - Validator################## -->
+    <section class="mt-10">
+        <h2 class="text-xl font-bold mb-2">Валидатор - тестовая форма</h2>
+        <form id=" test">
+            <div class="form__item">
+                <label for="email">Email:</label>
+                <input class="border rouneded-lg" type="email" id="email" name="email" required
+                    data-pristine-required-message="Поле обязательно для заполнения"
+                    data-pristine-email-message="Введите корректный адрес электронной почты">
+            </div>
+            <button class="bg-black text-white px-2 rounded-lg" type="submit">Отправить</button>
+        </form>
+    </section>
+    <!-- ############END - END - END################## -->
+
+    <!-- Pristine.js из CDN установим-->
+    <script src="https://cdn.jsdelivr.net/npm/pristinejs@1.1.0/dist/pristine.min.js"></script>
+    <!-- defer сначла DOM потом app.js ну и async тож можно, но не -->
+    <script src="./dist/app.js" type="module" defer></script>
 </body>
 
 </html>
